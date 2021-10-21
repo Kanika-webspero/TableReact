@@ -18,27 +18,76 @@ const style = {
   p: 4,
 };
 
+const emptyItem = {
+    title: '',
+    description: ''
+}
+
 const About = (props) => {
 
     const [open, setOpen] = React.useState(false);
-    const [data, setData] = React.useState('');
-    const handleOpen = () => setOpen(true);
+    const [data, setData] = React.useState([]);
+    const [edit, setEdit] = React.useState(false)
+    const [newItem, setNewItem] = React.useState(emptyItem);
+    const handleOpen = () =>{
+        setOpen(true);
+        setEdit(false)
+    } 
     const handleClose = () => setOpen(false);
 
     const saveButton = () => {
+        const newData = JSON.parse(JSON.stringify(data));
+            newData.push(newItem)
+            setData(newData);
+            setNewItem(emptyItem)
+            setOpen(false)
+             setEdit(false)
+
+    }
+
+    const updateButton = () => {
+
+        const newData = JSON.parse(JSON.stringify(data));
+        newData[edit] = newItem
+        setData(newData)
+        setNewItem(emptyItem)
         setOpen(false)
+        setEdit(false)
     }
 
     const toDoData = (e) => {
-        setData(e.target.value)
+        const {name, value} = e.target;
+        
+        setNewItem({
+            ...newItem,
+            [name]: value
+        })
+    }
+   
+
+    const handelEdit = (ele, index) => {
+      
+        setEdit(index)
+        setNewItem(ele)
+        setOpen(true)
+    }
+
+    let checkEdit = edit === false ? false : true;
+
+    const deleteValue = (ele, index) => {
+        const newData = JSON.parse(JSON.stringify(data));
+
+        const deleteValue = newData.filter((ele, idx) => idx !== index)
+        setData(deleteValue)
     }
 
     return (
         <div style={{marginTop: '90px'}}>
         <div>About</div>
-            <Button onClick={handleOpen}>Open modal</Button>
+            <Button onClick={handleOpen}>Add modal</Button>
         <div>
-        <Table columns={["Title", "Description"]} data={[]} keys={["title", "description"]} />
+        
+        <Table deletevalue={deleteValue} handeledit={handelEdit} columns={["Title", "Description", "Action"]} data={data} keys={["title", "description", "action"]} />
         </div>
         <Modal
             open={open}
@@ -48,14 +97,14 @@ const About = (props) => {
         >
             <Box sx={style}>
             <Typography id="modal-modal-title" variant="h6" component="h2">
-                Add Todo
+              {checkEdit ?  "Edit Todo" : "Add Todo"}
             </Typography>
             <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            <TextField onChange={toDoData} id="filled-basic" label="Title" variant="filled" />
-            <TextField onChange={toDoData} id="standard-basic" label="Description" variant="standard" />
-            <p>{data}</p>
+            <TextField value={newItem.title} name="title" onChange={toDoData} id="filled-basic" label="Title" variant="filled" />
+            <TextField value={newItem.description} name="description" onChange={toDoData} id="standard-basic" label="Description" variant="standard" />
+            
             </Typography>
-            <Button onClick={saveButton} style={{marginTop: '10px'}} variant="contained">Save</Button>
+            <Button disabled={newItem === null} onClick={checkEdit ? updateButton :saveButton} style={{marginTop: '10px'}} variant="contained">{checkEdit ? "Update" : "Save"}</Button>
             </Box>
         </Modal>
         </div>

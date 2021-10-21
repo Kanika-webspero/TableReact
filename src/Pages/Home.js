@@ -13,7 +13,7 @@ const Home = () => {
           });
 
           setDupliacteValues(dup)
-        // alert('kdj')
+        
     }
 
     const [arrayNumbers, setArrayNumbers] = useState(numbers)

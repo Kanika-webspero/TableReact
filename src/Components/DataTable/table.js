@@ -1,3 +1,4 @@
+import { Button } from "@mui/material";
 import React, {useState } from "react";
 
 import KeyboardEventHandler from 'react-keyboard-event-handler';
@@ -125,7 +126,12 @@ const Table = (props) => {
 
                   return (
                     <td id={cellId} onClick={() => handleCells(rowIndex, colIndex)} key={colIndex}>
-                      {val === 'thumbnailUrl' ? <img src={ele[val]} alt="random" /> : `${ele[val]}`}
+                      {val === 'thumbnailUrl' ? <img src={ele[val]} alt="random" /> : 
+                      val === 'action' ? <div>
+                      <Button onClick={() => props.handeledit(ele, rowIndex)}>Edit</Button>
+                      <Button onClick={() => props.deletevalue(ele, rowIndex)}>Delete</Button>
+
+                      </div> : `${ele[val]}` }
                     </td>
                   )
                 })}
