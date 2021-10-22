@@ -14,3 +14,7 @@ td, th {
 .selected{
   background-color: purple;
 }
+
+.btnHighlight {
+  background-color: lightblue;
+} 
