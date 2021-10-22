@@ -6,7 +6,8 @@ import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
 import Table from '../components/DataTable/table';
 import { useSelector, useDispatch } from 'react-redux';
-import { incNum, decNum, add, sub, multiple, divide} from '../redux/actions/count'
+import { incNum, decNum, add, sub, multiple, divide, reset} from '../redux/actions/count';
+import {randomName} from '../components/DataTable/MainData'
 
 const style = {
   position: 'absolute',
@@ -60,17 +61,23 @@ const About = (props) => {
             case 'add' :
                 dispatch(add(enterValue.numberOne, enterValue.numberTwo))
                 break;
-                case 'sub' :
-                    dispatch(sub(enterValue.numberOne, enterValue.numberTwo))
-                    break;
-                    case 'multi' :
+            case 'sub' :
+                dispatch(sub(enterValue.numberOne, enterValue.numberTwo))
+                break;
+            case 'multi' :
                 dispatch(multiple(enterValue.numberOne, enterValue.numberTwo))
                 break;
-                case 'divide' :
+            case 'divide' :
                 dispatch(divide(enterValue.numberOne, enterValue.numberTwo))
                 break;
                 default: break
         }
+    }
+
+    const handelReset = () => {
+        dispatch(reset());
+        setEnterValue(emptyInput);
+        setOperator('')
     }
 
     const handleOpen = () =>{
@@ -172,12 +179,11 @@ const About = (props) => {
         <button className={operator === 'divide' ? 'btnHighlight' : null} onClick={() => handelOperator('divide')}>Divide</button>
         <input name='numberTwo' onChange={inputValue} value={enterValue.numberTwo} type="number"></input>
         <button disabled={enterDisable} onClick={handelEnter}>Enter</button>
-        <button  disabled={enterDisable}>Reset</button>
+        <button  disabled={enterDisable} onClick={handelReset}>Reset</button>
         <p>Result: {myState.calculate} </p>
         </div>
         </div>
         </div>
-
         </div>
     )
 }

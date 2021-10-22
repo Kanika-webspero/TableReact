@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE } from "../constants"
+import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET } from "../constants"
 
 export const incNum = (inc) => {
     return {
@@ -39,5 +39,14 @@ export const divide = (a, b) => {
     return {
         type: DIVIDE,
         payload: a / b
+    }
+
+
+}
+
+export const reset = () => {
+    return {
+        type: RESET,
+        payload: ''
     }
 }

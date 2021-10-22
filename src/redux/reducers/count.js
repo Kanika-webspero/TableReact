@@ -1,4 +1,4 @@
-import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE} from "../constants";
+import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET} from "../constants";
 
 const initialState = {count: 0, calculate: 0};
 
@@ -13,19 +13,11 @@ export const count = (state = initialState, action) => {
             ...state,
             count: payload
         } ;
-        case ADD: return {
-            ...state,
-            calculate:  payload
-        } 
-        case SUBTRACT: return {
-            ...state,
-            calculate:  payload
-        } 
-        case MULTIPLY: return {
-            ...state,
-            calculate:  payload
-        } 
-        case DIVIDE: return {
+        case ADD: 
+        case SUBTRACT: 
+        case MULTIPLY: 
+        case DIVIDE: 
+        case RESET: return {
             ...state,
             calculate:  payload
         } 
