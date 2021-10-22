@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { duplicateArray, numbers } from '../Components/DataTable/MainData';
+import { duplicateArray, numbers } from '../components/DataTable/MainData';
 
 const Home = () => {
 

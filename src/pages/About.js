@@ -4,7 +4,9 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import Modal from '@mui/material/Modal';
 import { TextField } from '@mui/material';
-import Table from '../Components/DataTable/table'
+import Table from '../components/DataTable/table';
+import { useSelector, useDispatch } from 'react-redux';
+import { incNum, decNum} from '../redux/actions/count'
 
 const style = {
   position: 'absolute',
@@ -24,6 +26,10 @@ const emptyItem = {
 }
 
 const About = (props) => {
+
+    const myState = useSelector((state) => state.count)
+   console.log(myState, 'myState')
+    const dispatch = useDispatch();
 
     const [open, setOpen] = React.useState(false);
     const [data, setData] = React.useState([]);
@@ -107,6 +113,19 @@ const About = (props) => {
             <Button disabled={newItem === null} onClick={checkEdit ? updateButton :saveButton} style={{marginTop: '10px'}} variant="contained">{checkEdit ? "Update" : "Save"}</Button>
             </Box>
         </Modal>
+
+        <div>
+        <div>
+        <h4>Increment/Decrement</h4>
+        <p>{myState.count}</p>
+        <div>
+        <Button onClick={() => dispatch(decNum(myState.count))}>Sub</Button>
+        <Button onClick={() => dispatch(incNum(myState.count))}>Add</Button>
+
+        </div>
+        </div>
+        </div>
+
         </div>
     )
 }

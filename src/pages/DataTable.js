@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
-import Table from '../Components/DataTable/table'
-import { columns, keys, numbers } from "../Components/DataTable/MainData";
-import Header from "../Components/DataTable/Header";
+import Table from '../components/DataTable/table'
+import { columns, keys, numbers } from "../components/DataTable/MainData";
+import Header from "../components/DataTable/Header";
 import axios from "axios";
 
 const DataTable = () => {

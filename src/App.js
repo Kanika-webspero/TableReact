@@ -1,15 +1,15 @@
 // import logo from './logo.svg';
 import './App.css';
-import DataTable from './Pages/DataTable'
-import Home from './Pages/Home';
-import About from './Pages/About';
+import DataTable from './pages/DataTable'
+import Home from './pages/Home';
+import About from './pages/About';
 // import MainContainer from ''
 import { 
   Route, 
   Switch, 
   BrowserRouter as Router
  } from 'react-router-dom';
-import MainHeader from './Components/MainHeader';
+import MainHeader from './components/MainHeader';
 
 function App() {
   return (
