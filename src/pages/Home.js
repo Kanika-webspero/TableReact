@@ -3,8 +3,6 @@ import { duplicateArray, numbers } from '../components/DataTable/MainData';
 
 const Home = () => {
 
-    // const duplicateArray = [1, 2, 3, 4, 1, 2, 3]
-
     const [duplicateValues, setDupliacteValues] = useState(duplicateArray)
 
     const removeDuplicate = () => {
