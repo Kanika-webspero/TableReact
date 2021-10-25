@@ -1,4 +1,5 @@
-import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET} from "../constants";
+import { countries } from "../../pages/CountriesData";
+import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET, SEARCHCOUNTRIES} from "../constants";
 
 const initialState = {count: 0, calculate: 0};
 
@@ -21,6 +22,7 @@ export const count = (state = initialState, action) => {
             ...state,
             calculate:  payload
         } 
+        
         default: return state;
         
     }

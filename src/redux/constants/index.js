@@ -5,3 +5,5 @@ export const SUBTRACT = 'SUBTRACT';
 export const MULTIPLY = 'MULTIPLY';
 export const DIVIDE = 'DIVIDE';
 export const RESET = 'RESET';
+export const SEARCHCOUNTRIES = 'SEARCHCOUNTRIES';
+export const SEARCHSTATES = 'SEARCHSTATES';

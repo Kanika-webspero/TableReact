@@ -7,6 +7,8 @@ import { TextField } from '@mui/material';
 import Table from '../components/DataTable/table';
 import { useSelector, useDispatch } from 'react-redux';
 import { incNum, decNum, add, sub, multiple, divide, reset } from '../redux/actions/count';
+import { searchCountry, searchState } from '../redux/actions/options'
+import MyAutoComplete from '../components/AutoComplete';
 
 const style = {
     position: 'absolute',
@@ -34,6 +36,7 @@ const emptyInput = {
 const About = (props) => {
 
     const myState = useSelector((state) => state.count)
+    const myCountriesState = useSelector((state) => state.options)
     const dispatch = useDispatch();
 
     const [open, setOpen] = React.useState(false);
@@ -42,6 +45,9 @@ const About = (props) => {
     const [newItem, setNewItem] = React.useState(emptyItem);
     const [operator, setOperator] = React.useState('');
     const [enterValue, setEnterValue] = React.useState(emptyInput);
+    const [inputSearchValue, setInputSearchValue] = React.useState('');
+    const [inputSearchState, setInputSearchState] = React.useState('')
+
 
     const handelOperator = (getOperator) => {
         setOperator(getOperator);
@@ -133,6 +139,33 @@ const About = (props) => {
 
     const enterDisable = enterValue.numberOne && enterValue.numberTwo && operator !== '' ? false : true
 
+    const searchValue = (e) => {
+        console.log(e.target.value, 'e.target.value')
+
+        setInputSearchValue(e.target.value);
+        dispatch(searchCountry(e.target.value, myState.list))
+    }
+
+    const searchInputState = (e) => {
+        console.log(e.target.value, 'e.target.value')
+
+        setInputSearchState(e.target.value);
+        dispatch(searchState(e.target.value, myCountriesState.listOfStates))
+    }
+
+    const [selectCountryDropDown, setSelectCountryDropDown] = React.useState(false)
+
+    const changeDropDownValue = (val, id) => {
+        console.log(val, '===val')
+        console.log(id, '===id')
+
+        // const filteredSelectedCountry = myCountriesState.list.filter((val, id) => (
+
+        // ))
+        
+        setSelectCountryDropDown(true)
+    }
+
     return (
         <div style={{ marginTop: '90px' }}>
             <div>About</div>
@@ -180,6 +213,29 @@ const About = (props) => {
                         <button disabled={enterDisable} onClick={handelEnter}>Enter</button>
                         <button disabled={enterDisable} onClick={handelReset}>Reset</button>
                         <p>Result: {myState.calculate} </p>
+                    </div>
+                    <br />
+                    <div>
+                    {console.log(myState, 'myState')}
+                    {console.log(myCountriesState.list, 'myCountriesState.list')}
+
+                   <MyAutoComplete 
+                   label='Countries'
+                   changeDropDownValue={changeDropDownValue}
+                    options={myCountriesState.list}
+                    value={inputSearchValue}
+                    changeValue={searchValue}
+                   
+                   />
+                   {console.log(selectCountryDropDown, '==selectCountryDropDown')}
+                {selectCountryDropDown ? <MyAutoComplete 
+                   label='States'
+                    options={myCountriesState.listOfStates}
+                     value={inputSearchState}
+                     changeValue={searchInputState}
+                    /> : null}
+                   
+                   
                     </div>
                 </div>
             </div>

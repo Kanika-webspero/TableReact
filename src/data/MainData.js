@@ -30,3 +30,8 @@ export const data = [
 export const numbers = ['1', '2', '3', '4', '5']
 
 export const duplicateArray = ['1', '2', '3', '4', '5', '6', '1', '2']
+
+export const countries = ['India', 'Canada', "	Afghanistan", 'Albania', 'Algeria', 'Andorra', 'Angola', 'Argentina',
+                          'Armenia', 'Australia', 'Austria', 'Azerbaijan', 'Bahamas', 'Bahrain', 'Bangladesh', 'Barbados',
+                        'Belarus', 'Belgium', 'Belize', 'China', 'Bhutan', 'Chile', 'Colombia', 'Denmark', 'Dominica', 
+                    'Egypt', 'Ethiopia', 'Finland', 'France', 'Germany', 'Greece']
