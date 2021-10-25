@@ -9,6 +9,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import { incNum, decNum, add, sub, multiple, divide, reset } from '../redux/actions/count';
 import { searchCountry, searchState } from '../redux/actions/options'
 import MyAutoComplete from '../components/AutoComplete';
+import { countryState } from './CountriesData';
+// import {listOfStates} from ''
 
 const style = {
     position: 'absolute',
@@ -143,7 +145,7 @@ const About = (props) => {
         console.log(e.target.value, 'e.target.value')
 
         setInputSearchValue(e.target.value);
-        dispatch(searchCountry(e.target.value, myState.list))
+        dispatch(searchCountry(e.target.value, myCountriesState.list))
     }
 
     const searchInputState = (e) => {
@@ -156,14 +158,36 @@ const About = (props) => {
     const [selectCountryDropDown, setSelectCountryDropDown] = React.useState(false)
 
     const changeDropDownValue = (val, id) => {
-        console.log(val, '===val')
+        // console.log(val, '===val')
         console.log(id, '===id')
+        console.log(myCountriesState, 'jnjbjh')
 
-        // const filteredSelectedCountry = myCountriesState.list.filter((val, id) => (
-
-        // ))
-        
+        if(id) {
+            const filteredSelectedCountry = myCountriesState.listOfStates && myCountriesState.listOfStates.filter((val) => 
+            val.countryId === id.id
+        )
+        console.log(filteredSelectedCountry, 'jdksvkjds')
+        // setInputSearchState(filteredSelectedCountry)
+        dispatch(searchState(filteredSelectedCountry))
         setSelectCountryDropDown(true)
+        }else {
+        dispatch(searchState(countryState))
+
+        setSelectCountryDropDown(true)
+
+        }
+
+        
+    }
+
+    const changeDropDownStateData = (val, id) => {
+        // console.log(val, '===val')
+        // console.log(id, '===id')
+
+        // const filteredSelectedCountry = myCountriesState.listOfStates.filter((val, id) => (
+        //     myCountriesState.listOfStates(val).id === id
+        // ))
+
     }
 
     return (
@@ -230,6 +254,7 @@ const About = (props) => {
                    {console.log(selectCountryDropDown, '==selectCountryDropDown')}
                 {selectCountryDropDown ? <MyAutoComplete 
                    label='States'
+                   changeDropDownValue={changeDropDownStateData}
                     options={myCountriesState.listOfStates}
                      value={inputSearchState}
                      changeValue={searchInputState}

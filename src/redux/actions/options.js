@@ -12,8 +12,9 @@ export const searchCountry = (searchedValue, allCountries) => {
         }
     }
 
-export const searchState = () => {
+export const searchState = (a) => {
     return {
         type: SEARCHSTATES,
+        payload: a
     }
 }
