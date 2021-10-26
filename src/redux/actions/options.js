@@ -1,19 +1,22 @@
-import { SEARCHCOUNTRIES, SEARCHSTATES } from '../constants/index' 
+import { SEARCHCITIES, SEARCHCOUNTRIES, SEARCHSTATES } from '../constants/index' 
 
-export const searchCountry = (searchedValue, allCountries) => {
-    //     console.log(searchedValue, 'searchedValue');
-    //     console.log(allCountries, 'allCountries');
-    // const unLinked = allCountries.filter((suggestion) => suggestion.name.toLowerCase().indexOf(searchedValue.toLowerCase()) > -1)
-    
-    
+export const searchCountry = () => {
+       
         return {
             type: SEARCHCOUNTRIES,
-            // payload: unLinked
         }
     }
 
-export const searchState = () => {
+export const searchState = (statesRelatedToCountry, b) => {
     return {
         type: SEARCHSTATES,
+        payload: statesRelatedToCountry
+    }
+}
+
+export const searchCity = (cityRelatedToState) => {
+    return {
+        type: SEARCHCITIES,
+        payload: cityRelatedToState
     }
 }

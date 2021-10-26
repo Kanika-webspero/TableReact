@@ -1,5 +1,4 @@
-import { countries } from "../../pages/CountriesData";
-import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET, SEARCHCOUNTRIES} from "../constants";
+import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET} from "../constants";
 
 const initialState = {count: 0, calculate: 0};
 

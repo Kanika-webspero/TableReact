@@ -1,244 +1,80 @@
-import * as React from 'react';
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
-import { TextField } from '@mui/material';
-import Table from '../components/DataTable/table';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { incNum, decNum, add, sub, multiple, divide, reset } from '../redux/actions/count';
-import { searchCountry, searchState } from '../redux/actions/options'
-import MyAutoComplete from '../components/AutoComplete';
+import MyAutoComplete from "../components/AutoComplete";
+import { searchCity, searchState } from '../redux/actions/options'
 
-const style = {
-    position: 'absolute',
-    top: '50%',
-    left: '50%',
-    transform: 'translate(-50%, -50%)',
-    width: 400,
-    bgcolor: 'background.paper',
-    border: '2px solid #000',
-    boxShadow: 24,
-    p: 4,
-};
-
-
-const emptyItem = {
-    title: '',
-    description: ''
-}
-
-const emptyInput = {
-    numberOne: '',
-    numberTwo: ''
+const emptyAutoComplete = {
+    id: '',
+    title: ''
 }
 
 const About = (props) => {
 
-    const myState = useSelector((state) => state.count)
-    const myCountriesState = useSelector((state) => state.options)
+    const allOptions = useSelector((state) => state.options)
     const dispatch = useDispatch();
 
-    const [open, setOpen] = React.useState(false);
-    const [data, setData] = React.useState([]);
-    const [edit, setEdit] = React.useState(false)
-    const [newItem, setNewItem] = React.useState(emptyItem);
-    const [operator, setOperator] = React.useState('');
-    const [enterValue, setEnterValue] = React.useState(emptyInput);
-    const [inputSearchValue, setInputSearchValue] = React.useState('');
-    const [inputSearchState, setInputSearchState] = React.useState('')
+    // States
+    const [country, setCountry] = useState(emptyAutoComplete);
+    const [st, setSt] = useState(emptyAutoComplete);
+    const [city, setCity] = useState(emptyAutoComplete);
 
-
-    const handelOperator = (getOperator) => {
-        setOperator(getOperator);
+    const filterStates = (countryId) => {
+        return (
+            allOptions.listOfStates.filter((val) => val.countryId === countryId)
+        )       
     }
 
-    const inputValue = (e) => {
-        const { name, value } = e.target
-        setEnterValue({
-            ...enterValue,
-            [name]: Number(value)
-        })
+    const filterCities = (citiesId) => {
+        return (
+            allOptions.listOfCities.filter((val) => val.citiesId === citiesId)
+        )       
     }
 
-    const handelEnter = () => {
-        switch (operator) {
-            case 'add':
-                dispatch(add(enterValue.numberOne, enterValue.numberTwo))
-                break;
-            case 'sub':
-                dispatch(sub(enterValue.numberOne, enterValue.numberTwo))
-                break;
-            case 'multi':
-                dispatch(multiple(enterValue.numberOne, enterValue.numberTwo))
-                break;
-            case 'divide':
-                dispatch(divide(enterValue.numberOne, enterValue.numberTwo))
-                break;
-            default: break
-        }
+    const handleCountry = (event, selectedObject) => {
+        if(selectedObject.id !== country && country.id) setSt(emptyAutoComplete);
+        setCountry(selectedObject);
+        const filteredStates = filterStates(selectedObject.id)
+        dispatch(searchState(filteredStates))    
     }
 
-    const handelReset = () => {
-        dispatch(reset());
-        setEnterValue(emptyInput);
-        setOperator('')
+    const handleState = (event, selectedObject) => {
+        if(selectedObject.id === city && city.id) return;
+        setSt(selectedObject);
+        const filteredCities = filterCities(selectedObject.id)
+        dispatch(searchCity(filteredCities))
     }
 
-    const handleOpen = () => {
-        setOpen(true);
-        setEdit(false)
-    }
-    const handleClose = () => setOpen(false);
-
-    const saveButton = () => {
-        const newData = JSON.parse(JSON.stringify(data));
-        newData.push(newItem)
-        setData(newData);
-        setNewItem(emptyItem)
-        setOpen(false)
-        setEdit(false)
-
-    }
-
-    const updateButton = () => {
-
-        const newData = JSON.parse(JSON.stringify(data));
-        newData[edit] = newItem
-        setData(newData)
-        setNewItem(emptyItem)
-        setOpen(false)
-        setEdit(false)
-    }
-
-    const toDoData = (e) => {
-        const { name, value } = e.target;
-
-        setNewItem({
-            ...newItem,
-            [name]: value
-        })
-    }
-
-
-    const handelEdit = (ele, index) => {
-
-        setEdit(index)
-        setNewItem(ele)
-        setOpen(true)
-    }
-
-    let checkEdit = edit === false ? false : true;
-
-    const deleteValue = (ele, index) => {
-        const newData = JSON.parse(JSON.stringify(data));
-
-        const deleteValue = newData.filter((ele, idx) => idx !== index)
-        setData(deleteValue)
-    }
-
-    const enterDisable = enterValue.numberOne && enterValue.numberTwo && operator !== '' ? false : true
-
-    const searchValue = (e) => {
-        console.log(e.target.value, 'e.target.value')
-
-        setInputSearchValue(e.target.value);
-        dispatch(searchCountry(e.target.value, myState.list))
-    }
-
-    const searchInputState = (e) => {
-        console.log(e.target.value, 'e.target.value')
-
-        setInputSearchState(e.target.value);
-        dispatch(searchState(e.target.value, myCountriesState.listOfStates))
-    }
-
-    const [selectCountryDropDown, setSelectCountryDropDown] = React.useState(false)
-
-    const changeDropDownValue = (val, id) => {
-        console.log(val, '===val')
-        console.log(id, '===id')
-
-        // const filteredSelectedCountry = myCountriesState.list.filter((val, id) => (
-
-        // ))
-        
-        setSelectCountryDropDown(true)
+    const handleCity = (event, selectedObject) => {
+        setCity(selectedObject)
     }
 
     return (
         <div style={{ marginTop: '90px' }}>
             <div>About</div>
-            <Button onClick={handleOpen}>Add modal</Button>
-            <div>
+                <MyAutoComplete
+                    label='Countries'
+                    changeDropDownValue={handleCountry}
+                    options={allOptions.list}
+                    value={country}
+                />
+                
+                {country.id &&
+                    <MyAutoComplete
+                        label='States'
+                        changeDropDownValue={handleState}
+                        options={allOptions.requiredStates}
+                        value={st}
+                    />
+                }
 
-                <Table deletevalue={deleteValue} handeledit={handelEdit} columns={["Title", "Description", "Action"]} data={data} keys={["title", "description", "action"]} />
-            </div>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Box sx={style}>
-                    <Typography id="modal-modal-title" variant="h6" component="h2">
-                        {checkEdit ? "Edit Todo" : "Add Todo"}
-                    </Typography>
-                    <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-                        <TextField value={newItem.title} name="title" onChange={toDoData} id="filled-basic" label="Title" variant="filled" />
-                        <TextField value={newItem.description} name="description" onChange={toDoData} id="standard-basic" label="Description" variant="standard" />
-
-                    </Typography>
-                    <Button disabled={newItem === null} onClick={checkEdit ? updateButton : saveButton} style={{ marginTop: '10px' }} variant="contained">{checkEdit ? "Update" : "Save"}</Button>
-                </Box>
-            </Modal>
-
-            <div>
-                <div>
-                    <h4>Increment/Decrement</h4>
-
-                    <div>
-                        <p>{myState.count}</p>
-                        <Button onClick={() => dispatch(decNum(myState.count))}>Sub</Button>
-                        <Button onClick={() => dispatch(incNum(myState.count))}>Add</Button>
-
-                    </div>
-                    <div>
-                        <input name='numberOne' onChange={inputValue} value={enterValue.numberOne} type="number"></input>
-                        <button className={operator === 'add' ? 'btnHighlight' : null} onClick={() => handelOperator('add')}>Add</button>
-                        <button className={operator === 'sub' ? 'btnHighlight' : null} onClick={() => handelOperator('sub')}>Sub</button>
-                        <button className={operator === 'multi' ? 'btnHighlight' : null} onClick={() => handelOperator('multi')}>Multi</button>
-                        <button className={operator === 'divide' ? 'btnHighlight' : null} onClick={() => handelOperator('divide')}>Divide</button>
-                        <input name='numberTwo' onChange={inputValue} value={enterValue.numberTwo} type="number"></input>
-                        <button disabled={enterDisable} onClick={handelEnter}>Enter</button>
-                        <button disabled={enterDisable} onClick={handelReset}>Reset</button>
-                        <p>Result: {myState.calculate} </p>
-                    </div>
-                    <br />
-                    <div>
-                    {console.log(myState, 'myState')}
-                    {console.log(myCountriesState.list, 'myCountriesState.list')}
-
-                   <MyAutoComplete 
-                   label='Countries'
-                   changeDropDownValue={changeDropDownValue}
-                    options={myCountriesState.list}
-                    value={inputSearchValue}
-                    changeValue={searchValue}
-                   
-                   />
-                   {console.log(selectCountryDropDown, '==selectCountryDropDown')}
-                {selectCountryDropDown ? <MyAutoComplete 
-                   label='States'
-                    options={myCountriesState.listOfStates}
-                     value={inputSearchState}
-                     changeValue={searchInputState}
-                    /> : null}
-                   
-                   
-                    </div>
-                </div>
-            </div>
+                {st.id && 
+                    <MyAutoComplete
+                        label='Cities'
+                        changeDropDownValue={handleCity}
+                        options={allOptions.requiredCities}
+                        value={city}
+                    />
+                }
         </div>
     )
 }

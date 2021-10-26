@@ -1,8 +1,4 @@
-import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET, SEARCHCOUNTRIES } from "../constants"
-
-
-// const unLinked = list.filter((suggestion) => suggestion.toLowerCase().indexOf(userInput.toLowerCase()) > -1)
-
+import { INCREMENT, DECREMENT, ADD, SUBTRACT, MULTIPLY, DIVIDE, RESET } from "../constants"
 
 export const incNum = (inc) => {
     return {
