@@ -1,8 +1,14 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
 import { useHistory } from 'react-router';
 
 const MainHeader = () => {
+
+    const [highlightTabs, setHighlightTabs] = useState('white')
+
+    useEffect(() => {
+        setHighlightTabs(window.location.pathname)
+    },[])
 
 const history = useHistory();
 
@@ -24,10 +30,10 @@ const history = useHistory();
 
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
-        <Button onClick={textButton} variant="outlined">Text</Button>
-        <Button onClick={aboutButton} variant="outlined">About</Button>
-        <Button onClick={familyButton} variant="outlined">Family</Button>
-        <Button onClick={otherButton} variant="outlined">Other</Button>
+        <Button style={highlightTabs === '/' ? {backgroundColor: 'purple'} : null} onClick={textButton} variant="outlined">Text</Button>
+        <Button style={highlightTabs === '/about' ? {backgroundColor: 'purple'} : null} onClick={aboutButton} variant="outlined">About</Button>
+        <Button style={highlightTabs === '/dataTable' ? {backgroundColor: 'purple'} : null} onClick={familyButton} variant="outlined">Family</Button>
+        <Button style={highlightTabs === '/other' ? {backgroundColor: 'purple'} : null} onClick={otherButton} variant="outlined">Other</Button>
         </div>
     )
 }

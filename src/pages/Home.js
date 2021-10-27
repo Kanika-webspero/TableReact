@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import MainHeader from '../components/MainHeader';
 import { duplicateArray, numbers } from '../data/MainData';
 
 const Home = () => {
@@ -24,6 +25,9 @@ const Home = () => {
 
     return (
         <div style={{marginTop: '90px'}}>
+        <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
+        <MainHeader />
+        </div>
         <div>
         Home
         </div>

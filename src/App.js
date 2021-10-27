@@ -10,14 +10,11 @@ import {
   Switch, 
   BrowserRouter as Router
  } from 'react-router-dom';
-import MainHeader from './components/MainHeader';
 
 function App() {
   return (
     <Router>
-    <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
-        <MainHeader />
-        </div>
+    
     <Switch>
     <Route exact path="/">
     <Home />

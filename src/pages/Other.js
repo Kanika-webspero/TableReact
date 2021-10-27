@@ -7,6 +7,7 @@ import { TextField } from '@mui/material';
 import Table from '../components/DataTable/table';
 import { useSelector, useDispatch } from 'react-redux';
 import { incNum, decNum, add, sub, multiple, divide, reset } from '../redux/actions/count';
+import MainHeader from '../components/MainHeader';
 
 const style = {
     position: 'absolute',
@@ -134,6 +135,9 @@ const About = () => {
     
     return (
         <div style={{ marginTop: '90px' }}>
+        <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
+        <MainHeader />
+        </div>
             <div>About</div>
             <Button onClick={handleOpen}>Add modal</Button>
             <div>
