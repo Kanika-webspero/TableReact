@@ -1,17 +1,14 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import { privateRoutes } from "./data/routes";
+import { Route, Redirect } from "react-router-dom";
 
-const PrivateRoutes = () => {
+const PrivateRoutes = ({component: Component, isAuth, ...rest}) => {
 
     return (
-
-         <div >
-                {privateRoutes.map((val) => (
-                    <Route path={val.to} component={val.component} />
-                ))}
-            </div>
-               
+        <Route {...rest} render={props => (
+            isAuth ?
+                <Component {...props} />
+            : <Redirect to="/" />
+        )} />       
     )
 }
 

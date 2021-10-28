@@ -1,17 +1,14 @@
 import React from "react";
-import { Route } from "react-router-dom";
-import { publicRoutes } from "./data/routes";
+import { Route, Redirect } from "react-router-dom";
 
-const PublicRoutes = () => {
-
+const PublicRoutes = ({component: Component, isAuth, ...rest}) => {
+    return (    
    
-
-    return (      
-            <div>
-                {publicRoutes.map((val, index) => (
-                    <Route key={index}  path={val.to} component={val.component} />
-                ))}
-            </div>        
+        <Route {...rest} render={props => (
+            isAuth  ?
+                <Redirect to="/home" />
+            : <Component {...props} />
+        )} />      
     )
 }
 

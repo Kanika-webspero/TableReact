@@ -5,32 +5,32 @@ import Other from "../pages/Other"
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 
-export const publicRoutes = [
+export const privateRoutes = [
     {
-        component: < Home />,
+        component: Home ,
         to: '/home'
     },
     {
-        component: <About />,
+        component: About ,
         to: '/about'
     },
     {
-        component: <DataTable />,
+        component: DataTable ,
         to: '/DataTable'
     },
     {
-        component: <Other />,
+        component: Other ,
         to: '/other'
     }
 ]
 
-export const privateRoutes = [
+export const publicRoutes = [
     {
-        component: < SignIn />,
+        component: SignIn ,
         to: '/'
     },
     {
-        component: < SignUp />,
+        component: SignUp ,
         to: '/signup'
     }
 ]
