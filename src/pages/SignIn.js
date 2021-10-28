@@ -4,10 +4,10 @@ import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedIn
 import { useHistory } from 'react-router';
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
-
 import MyGrid from "./Grid";
+import { getUser, setAuth } from '../services';
 
-const SignIn = () => {
+const SignIn = (props) => {
 
 
     const [values, setValues] = useState({
@@ -39,15 +39,24 @@ const SignIn = () => {
         history.push('/signup')
     }
 
+    const signInButton = () => {
+       const user = getUser();
+        if(user.email === values.weight && user.password === values.password) {
+           props.setIsAuth(true);
+           setAuth(true)
+           history.push('/home')
+        } else {
+            alert ('Invalid Credentials')
+        }
+    }
+
     return (
    
         <MyGrid
             leftSide={<img src={monument} alt="monument" width="100%" />}
             rightSide={
-                <div className="container">
-                
-                     <Typography variant="h4" component="h4">Sign in</Typography>
-                       
+                <div className="container">               
+                     <Typography variant="h4" component="h4">Sign in</Typography>                      
                      <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
                          <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
                          <OutlinedInput
@@ -59,8 +68,7 @@ const SignIn = () => {
                                  'aria-label': 'weight',
                              }}
                          />
-                     </FormControl>
-                      
+                     </FormControl>                     
                      <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
                          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                          <OutlinedInput
@@ -86,68 +94,12 @@ const SignIn = () => {
                              <Typography onClick={signUpRecommendation}>If you are not registered, please click here to sgn up.</Typography>
                          </div>
                          <div className="signInButton">
-                             <Button variant="contained">Sign In</Button>
+                             <Button onClick={signInButton} variant="contained">Sign In</Button>
                          </div>
                      </FormControl>
-
-              
              </div>
             }
         />
-            // <Grid container>
-            //     <Grid item xs={8}>
-            //         <img src={monument} alt="monument" />
-            //     </Grid>
-            //     <div className="container">
-            //         <Grid item xs={6}>
-            //             <Typography variant="h4" component="h4">Sign in</Typography>
-                       
-            //             <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
-            //                 <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
-            //                 <OutlinedInput
-            //                     id="outlined-adornment-weight"
-            //                     value={values.weight}
-            //                     onChange={handleChange('weight')}
-            //                     //   endAdornment={<InputAdornment position="end">kg</InputAdornment>}
-            //                     aria-describedby="outlined-weight-helper-text"
-            //                     inputProps={{
-            //                         'aria-label': 'weight',
-            //                     }}
-            //                 />
-            //             </FormControl>
-                      
-            //             <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
-            //                 <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-            //                 <OutlinedInput
-            //                     id="outlined-adornment-password"
-            //                     type={values.showPassword ? 'text' : 'password'}
-            //                     value={values.password}
-            //                     onChange={handleChange('password')}
-            //                     endAdornment={
-            //                         <InputAdornment position="end">
-            //                             <IconButton
-            //                                 aria-label="toggle password visibility"
-            //                                 onClick={handleClickShowPassword}
-            //                                 onMouseDown={handleMouseDownPassword}
-            //                                 edge="end"
-            //                             >
-            //                                 {values.showPassword ? <VisibilityOff /> : <Visibility />}
-            //                             </IconButton>
-            //                         </InputAdornment>
-            //                     }
-            //                     label="Password"
-            //                 />
-            //                 <div className="signUpRecommendation">
-            //                     <Typography onClick={signUpRecommendation}>If you are not registered, please click here to sgn up.</Typography>
-            //                 </div>
-            //                 <div className="signInButton">
-            //                     <Button variant="contained">Sign In</Button>
-            //                 </div>
-            //             </FormControl>
-
-            //         </Grid>
-            //     </div>
-            // </Grid>
     )
 }
 
