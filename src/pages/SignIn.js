@@ -50,6 +50,10 @@ const SignIn = (props) => {
         }
     }
 
+    const forgotPassword = () => {
+        history.push('/forgotpassword')
+    }
+
     return (
    
         <MyGrid
@@ -92,6 +96,9 @@ const SignIn = (props) => {
                          />
                          <div className="signUpRecommendation">
                              <Typography onClick={signUpRecommendation}>If you are not registered, please click here to sgn up.</Typography>
+                         </div>
+                         <div className="signInButton">
+                             <Button onClick={forgotPassword} variant="text">Forgot Password</Button>
                          </div>
                          <div className="signInButton">
                              <Button onClick={signInButton} variant="contained">Sign In</Button>

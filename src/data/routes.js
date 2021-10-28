@@ -1,5 +1,6 @@
 import About from "../pages/About";
 import DataTable from "../pages/DataTable";
+import ForgotPassword from "../pages/ForgotPassword";
 import Home from "../pages/Home";
 import Other from "../pages/Other"
 import SignIn from "../pages/SignIn";
@@ -28,6 +29,10 @@ export const publicRoutes = [
     {
         component: SignIn ,
         to: '/'
+    },
+    {
+        component: ForgotPassword ,
+        to: '/forgotpassword'
     },
     {
         component: SignUp ,
