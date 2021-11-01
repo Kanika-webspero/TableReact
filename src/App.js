@@ -3,6 +3,7 @@ import './App.css';
 import DataTable from './pages/DataTable'
 import Home from './pages/Home';
 import About from './pages/About';
+import Other from './pages/Other'
 // import MainContainer from ''
 import { 
   Route, 
@@ -26,6 +27,9 @@ function App() {
     </Route>
     <Route path="/dataTable">
     <DataTable />
+    </Route>
+    <Route path="/other">
+    <Other />
     </Route>
     </Switch>
     </Router>

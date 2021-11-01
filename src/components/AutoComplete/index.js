@@ -12,6 +12,7 @@ export default function MyAutoComplete(props) {
       options={props.options}
       onChange={props.changeDropDownValue}
       getOptionLabel={(option) => option.title}
+      value={props.value}
       renderInput={(params) => (
         <TextField {...params} label={props.label} margin="normal" />
       )}

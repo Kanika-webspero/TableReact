@@ -1,8 +1,16 @@
-import { countryState } from "../../pages/CountriesData";
+import { cities, countryState } from "../../pages/CountriesData";
 import { countries } from "../../pages/CountriesData";
-import { SEARCHCOUNTRIES, SEARCHSTATES } from "../constants";
+import { SEARCHCITIES, SEARCHCOUNTRIES, SEARCHSTATES } from "../constants";
 
-const initialState = {listOfStates: countryState, list: countries};
+const initialState = {
+    listOfStates: countryState, 
+    list: countries, 
+    listOfCities: cities,
+    requiredStates: [],
+    requiredCountries: [],
+    requiredCities: [],
+
+};
 
 export const options = (state = initialState, action) => {
     const {type, payload} = action
@@ -13,7 +21,11 @@ export const options = (state = initialState, action) => {
         }        
         case SEARCHSTATES: return {
             ...state,
-            listOfStates: payload
+            requiredStates: payload
+        }
+        case SEARCHCITIES: return {
+            ...state,
+            requiredCities: payload
         }
         default: return state;
         

@@ -17,11 +17,17 @@ const history = useHistory();
     const familyButton = () => {
         history.push('/dataTable')
     }
+
+    const otherButton = () => {
+        history.push('/other')
+    }
+
     return (
-        <div>
-        <Button onClick={textButton} variant="text">Text</Button>
-        <Button onClick={aboutButton} variant="contained">About</Button>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+        <Button onClick={textButton} variant="outlined">Text</Button>
+        <Button onClick={aboutButton} variant="outlined">About</Button>
         <Button onClick={familyButton} variant="outlined">Family</Button>
+        <Button onClick={otherButton} variant="outlined">Other</Button>
         </div>
     )
 }
