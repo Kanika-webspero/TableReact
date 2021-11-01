@@ -3,6 +3,7 @@ import Table from '../components/DataTable/table'
 import { columns, keys, numbers } from "../data/MainData";
 import Header from "../components/DataTable/Header";
 import axios from "axios";
+import MainHeader from "../components/MainHeader";
 
 const DataTable = () => {
 
@@ -67,6 +68,9 @@ const DataTable = () => {
 
     return (
         <div style={{marginTop:'80px'}}>
+        <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
+        <MainHeader />
+        </div>
         
             <div style={{ backgroundColor: 'red', height: '100px', width: '100%', fontSize: '50px', top: '0px' }} id='header'>
                 <Header />

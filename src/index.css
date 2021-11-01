@@ -1,3 +1,8 @@
+#root {
+  overflow: hidden;
+    height: 100vh;
+}
+
 .table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
@@ -18,3 +23,39 @@ td, th {
 .btnHighlight {
   background-color: lightblue;
 } 
+
+/* Sign in page css */
+
+.inputDetails {
+  margin-bottom: 8px;
+  margin-top: 8px;
+}
+
+.signInButton, .signUpRecommendation {
+  /* margin-top: 20px; */
+  cursor: pointer;
+  margin-top: 8px;
+
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+  height: 100vh;
+  padding: 10px;
+}
+
+.alignmentInput {
+  margin-bottom: 8px;
+  width: 100%;
+}
+
+.inputWidth {
+  width: 100%;
+}
+
+.signoutbutton {
+  
+}

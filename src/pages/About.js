@@ -51,7 +51,7 @@ const About = (props) => {
 
     return (
         <div style={{ marginTop: '90px' }}>
-         <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
+        <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
         <MainHeader />
         </div>
             <div>About</div>
