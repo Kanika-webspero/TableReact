@@ -8,6 +8,17 @@ const TableOne = "TableOne";
 const Table = (props) => {
 
   const [tableCells, setTableCells] = useState(null);
+  // const [value, setValue] = useState({
+  //   title: ''
+  // });
+
+  const handleChange = e => {
+    // setValue(e.target.value);
+    setTableCells({...tableCells, value: e.target.value})
+    console.log(e.target.value, ']]]]]')
+
+  };
+
 
   const getTableCell = (tableName, rowIndex, colIndex) => {
     return `${tableName}_${rowIndex}_${colIndex}`
@@ -26,15 +37,25 @@ const Table = (props) => {
   }
 
   const handleCells = (rowIndex, colIndex) => {
+    // debugger
     const cellId = getTableCell(TableOne, rowIndex, colIndex);
     handelRemove();
     handelSelect(cellId);
-    setTableCells({
-      id: "id",
-      selectedIndex: cellId,
-      rowIndex,
-      colIndex
-    })
+    if(tableCells && !tableCells.editMode) {
+     
+      // handleChange(cellId)
+      setTableCells({
+        id: "id",
+        selectedIndex: cellId,
+        rowIndex,
+        colIndex,
+        type: "text",
+        name: "age", //dynamic to be 
+        value: "test",
+        editMode: false
+      }) 
+    }
+    
   }
 
   const keyMove = (e, e2, index) => {
@@ -73,6 +94,7 @@ const Table = (props) => {
   
           }
           break;
+          //up arrow
         case 38:
           let upIndex = rowIndex - 1;
           if (upIndex < 0) {
@@ -82,6 +104,7 @@ const Table = (props) => {
   
           }
           break;
+          //down arrow
         case 40:
           let downIndex = rowIndex + 1;
           if (downIndex > 99) {
@@ -91,12 +114,21 @@ const Table = (props) => {
   
           }
           break;
+          //enter
+          case 13:
+            alert('djchj')
+            setTableCells({...tableCells, editMode: !tableCells.editMode})
+            return;
         default:
           return;
       }
     }
     
   }
+
+  // console.log(props.data, '====data')
+  //           console.log(props.keys, '====keys')
+            console.log(tableCells, 'hdhtableCells')
 
   return (
 
@@ -119,6 +151,8 @@ const Table = (props) => {
 
         <tbody>
           {props && props.data && props.data.map((ele, rowIndex) => {
+            
+
             return (
               <tr key={rowIndex}>
                 {props && props.keys && props.keys.map((val, colIndex) => {
@@ -131,7 +165,7 @@ const Table = (props) => {
                       <Button onClick={() => props.handeledit(ele, rowIndex)}>Edit</Button>
                       <Button onClick={() => props.deletevalue(ele, rowIndex)}>Delete</Button>
 
-                      </div> : `${ele[val]}` }
+                      </div> : tableCells && tableCells.selectedIndex === cellId && tableCells.editMode ? <input type="text"  onChange={handleChange} value={ele[val]} /> : `${ele[val]}` }
                     </td>
                   )
                 })}

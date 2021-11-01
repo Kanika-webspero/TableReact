@@ -1,5 +1,4 @@
-import { Password } from '@mui/icons-material';
-import { Button, FormControl, IconButton, InputAdornment, InputLabel, OutlinedInput, Typography } from '@mui/material';
+import { Button, FormControl, InputLabel, OutlinedInput, Typography } from '@mui/material';
 import React from 'react';
 import { useState } from 'react';
 import { getUser } from '../services';
@@ -12,7 +11,6 @@ const ForgotPassword = () => {
     const [values, setValues] = useState({
         email: ''
     });
-
 
     const handleChange = (prop) => (event) => {
         setValues({ ...values, [prop]: event.target.value });   
