@@ -8,3 +8,4 @@ export const RESET = 'RESET';
 export const SEARCHCOUNTRIES = 'SEARCHCOUNTRIES';
 export const SEARCHSTATES = 'SEARCHSTATES';
 export const SEARCHCITIES = 'SEARCHCITIES';
+export const SEARCHNAMES = "SEARCHNAMES";

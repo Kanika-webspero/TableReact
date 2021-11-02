@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import MainHeader from '../components/MainHeader';
 import { duplicateArray, numbers } from '../data/MainData';
+import TemporaryDrawer from './Drawer';
 
 const Home = (props) => {
 
@@ -28,6 +29,7 @@ const Home = (props) => {
         <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
         <MainHeader setIsAuth={props.setIsAuth}/>
         </div>
+        <TemporaryDrawer />
         <div>
         Home
         </div>
