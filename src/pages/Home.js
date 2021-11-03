@@ -26,7 +26,7 @@ const Home = (props) => {
 
     return (
         <div style={{marginTop: '90px'}}>
-        <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
+        <div style={{backgroundColor: 'white', height: '80px',position:'fixed', top: '0px', width: '100%', zIndex: '999999'}}>
         <MainHeader setIsAuth={props.setIsAuth}/>
         </div>
         <TemporaryDrawer />

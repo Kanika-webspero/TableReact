@@ -1,93 +1,92 @@
 import React, { useEffect, useRef, useState } from "react";
-import Table from '../components/DataTable/table'
+import Table from "../components/DataTable/table";
 import { columns, keys, numbers } from "../data/MainData";
 import Header from "../components/DataTable/Header";
 import axios from "axios";
 import MainHeader from "../components/MainHeader";
+import AddIcon from "@mui/icons-material/Add";
 
 const DataTable = (props) => {
+  const [arrayNumbers, setArrayNumbers] = useState(numbers);
 
-    const prevScrollY = useRef(0);
+  const clickMe = () => {
+    arrayNumbers.splice(3, 0, "0");
+    let x = JSON.parse(JSON.stringify(arrayNumbers));
+    setArrayNumbers(x);
+  };
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const currentScrollY = window.scrollY;
-            // debugger
-            if (currentScrollY > 0) {
-             document.getElementById('header').style.height = '30px'
-            }
-            if (currentScrollY === 0) {
-                document.getElementById('header').style.height = '100px'
-            }
+  const [resData, setResData] = useState([]);
+  const [showImage, setShowImage] = useState([]);
 
-            prevScrollY.current = currentScrollY;
-        }
+  const API = async () => {
+    const response = await axios.get(
+      `https://jsonplaceholder.typicode.com/posts`
+    );
+    setResData(response.data);
+  };
 
-        window.addEventListener("scroll", handleScroll, { passive: true });
+  const imagesTable = async () => {
+    const res = await axios.get("https://jsonplaceholder.typicode.com/photos");
+    setShowImage(res.data);
+  };
 
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, [])
-
-    const [arrayNumbers, setArrayNumbers] = useState(numbers)
-
-    const clickMe = () => {
-        arrayNumbers.splice(3, 0, '0')
-        let x = JSON.parse(JSON.stringify(arrayNumbers));
-        setArrayNumbers(x)
+  useEffect(() => {
+    if (resData.length === 0) {
+      API();
     }
+  }, [resData]);
 
-    const [resData, setResData] = useState([]);
-    const [showImage, setShowImage] = useState([])
-
-    const API = async () => {
-        const response = await axios.get(`https://jsonplaceholder.typicode.com/posts`);
-        setResData(response.data)
+  useEffect(() => {
+    if (showImage.length === 0) {
+      imagesTable();
     }
+  }, [showImage]);
 
-    const imagesTable = async () => {
-        const res = await axios.get('https://jsonplaceholder.typicode.com/photos');
-        setShowImage(res.data)
-    }
+  return (
+    <>
+      <div style={{
+        //    width: "100%",
+            // zIndex: "9999999"
+             }}>
+        <div style={{ position: "fixed", width: "100%", top: "0px" }}>
+          <div
+            style={{
+              backgroundColor: "white",
+              height: "51px",
+              top: "0px",
+              width: "100%",
+            }}
+          >
+            <MainHeader setIsAuth={props.setIsAuth} />
+          </div>
 
-
-    useEffect(() => {
-        if (resData.length === 0) {
-            API();
-
-        }
-
-    }, [resData])
-
-    useEffect(() => {
-        if (showImage.length === 0) {
-            imagesTable();
-
-        }
-
-    }, [showImage])
-
-    return (
-        <div style={{marginTop:'80px'}}>
-        <div style={{backgroundColor: 'lightgray', height: '80px',position:'fixed', top: '0px', width: '100%'}}>
-        <MainHeader setIsAuth={props.setIsAuth}/>
+          <div>
+            <Header />
+          </div>
         </div>
-        
-            <div style={{ backgroundColor: 'red', height: '100px', width: '100%', fontSize: '50px', top: '0px' }} id='header'>
-                <Header />
-            </div>
-            <div>
-                <Table columns={columns} data={resData} keys={keys} />
-                <br />
+        <div style={{marginTop: '205px'}}>
+          <div
+            style={{ marginTop: "23px",
+             display: "flex",
+             marginBottom: '10px'
+            //flexDirection: "row"
+               }}
+          >
+            <div style={{ fontSize: "23px" }}>Personal Info</div>
+            <AddIcon style={{ color: "lightgray" }} />
+          </div>
+          <Table columns={columns} data={resData} keys={keys} />
 
-                <br />
-                <button onClick={clickMe}>Click me</button>
-                {arrayNumbers.map((nums, index) => (
-                    <div key={index}>{nums}</div>
-                ))}
-
-            </div>
+          <button onClick={clickMe}>Click me</button>
+          {arrayNumbers.map((nums, index) => (
+            <div key={index}>{nums}</div>
+          ))}
         </div>
-    )
-}
+      </div>
+
+      <div></div>
+    </>
+  );
+};
 
 export default DataTable;
