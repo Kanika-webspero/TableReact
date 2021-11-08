@@ -134,8 +134,8 @@ const About = (props) => {
     const enterDisable = enterValue.numberOne && enterValue.numberTwo && operator !== '' ? false : true
     
     return (
-        <div style={{ marginTop: '90px' }}>
-        <div style={{backgroundColor: 'white', height: '80px',position:'fixed', top: '0px', width: '100%', zIndex: '999999'}}>
+        <div className='othersPageContainer'>
+        <div className='othersPageHeader'>
         <MainHeader setIsAuth={props.setIsAuth}/>
         </div>
             <div>About</div>
@@ -159,7 +159,7 @@ const About = (props) => {
                         <TextField value={newItem.description} name="description" onChange={toDoData} id="standard-basic" label="Description" variant="standard" />
 
                     </Typography>
-                    <Button disabled={newItem === null} onClick={checkEdit ? updateButton : saveButton} style={{ marginTop: '10px' }} variant="contained">{checkEdit ? "Update" : "Save"}</Button>
+                    <Button disabled={newItem === null} onClick={checkEdit ? updateButton : saveButton} className='othersPageButton' variant="contained">{checkEdit ? "Update" : "Save"}</Button>
                 </Box>
             </Modal>
 

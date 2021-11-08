@@ -38,7 +38,7 @@ const ForgotPassword = () => {
             rightSide={
                 <div className="container">               
                      <Typography variant="h4" component="h4">Forgrt password</Typography>                      
-                     <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
+                     <FormControl className='inputBox' sx={{ m: 1, width: '25ch' }} variant="outlined">
                          <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
                          <OutlinedInput
                              id="outlined-adornment-weight"
@@ -50,7 +50,7 @@ const ForgotPassword = () => {
                              }}
                          />
                      </FormControl>                     
-                     <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">                        
+                     <FormControl className='inputBox' sx={{ m: 1, width: '25ch' }} variant="outlined">                        
                          <div className="signInButton">
                              <Button onClick={knowPassword} variant="contained">Know password</Button>
                              <Button onClick={signin} variant="contained">Sign in</Button>

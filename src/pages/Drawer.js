@@ -44,12 +44,13 @@ const allOptions = useSelector((state) => state.namesReducer)
     <div>
       {[ 'right'].map((anchor) => (
         <React.Fragment key={anchor}>
-          <div  onClick={toggleDrawer(anchor, true)}>
+          <div className='searchIcon' onClick={toggleDrawer(anchor, true)}>
           <SearchIcon/>
           </div>
           <Drawer
             anchor={anchor}
             open={state[anchor]}
+            onClose={toggleDrawer(anchor, false)}
           >
             {list(anchor)}
           </Drawer>

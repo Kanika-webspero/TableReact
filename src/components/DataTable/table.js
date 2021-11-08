@@ -132,9 +132,7 @@ const Table = (props) => {
 
   return (
 
-    <div style={{
-      // marginTop: '-100px'
-      }}>
+    <div>
 
       <KeyboardEventHandler handleKeys={['all']} onKeyEvent={keyMove} />
 

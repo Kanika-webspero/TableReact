@@ -24,12 +24,111 @@ td, th {
   background-color: lightblue;
 } 
 
-/* Sign in page css */
+/* Home Page styling */
 
-.inputDetails {
+.searchIcon{
+  display: flex;
+  justify-content: end;
+  margin-right: 15px;
+   color: lightgray
+}
+
+/* Signin, signup, forgotPassword */
+
+.inputBox{
+  width: 100%;
+}
+
+/* Others. about page styling */
+
+.othersPageContainer, .aboutPageContainer{
+  margin-top: '90px'
+}
+
+.othersPageHeader, .aboutPageHeader{
+  background-color: white;
+  height: 80px;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  z-index: 999999
+}
+
+.othersPageButton{
+  margin-top: '10px'
+}
+
+/* MainHeader */
+
+.mainHeaderContainer {
+  display: flex;
+  box-shadow: 0 8px 6px -6px black;
+  justify-content: space-between;
+  padding-left: 15px;
+  padding-right: 15px;       
+}
+
+.mainHeaderImage {
+  width: 30px;
+  height: 30px;
+  margin-top: 5px
+}
+
+.mainHeaderSignOut {
+  font-size: 44px;
+  color: gray;
+}
+
+/* Home page styling */
+
+.homeContainer {
+  margin-top: 90px
+}
+
+.homeHeader{
+  background-color: white;
+  height: 80px;
+  position:fixed;
+  top: 0px;
+  width: 100%;
+  left: 0px
+}
+
+/* Data table */
+
+.tableMainContainer {
+  position: fixed;
+  width: 100%;
+  top: 0px
+}
+
+.tableHeader {
+  background-color: white;
+  height: 51px;
+  top: 0px;
+  width: 100%
+}
+
+.tableContainer {
+  margin-top: 205px;
+}
+
+.tableContent {
+  margin-top: 23px;
+  display: flex;
+  margin-bottom: 10px;
+}
+
+.infoContent {
+  font-size: 23px;
+}
+.addIcon {
+  color: lightgray;
+}
+/* .inputDetails {
   margin-bottom: 8px;
   margin-top: 8px;
-}
+} */
 
 .signInButton, .signUpRecommendation {
   /* margin-top: 20px; */
@@ -54,8 +153,4 @@ td, th {
 
 .inputWidth {
   width: 100%;
-}
-
-.signoutbutton {
-  
 }

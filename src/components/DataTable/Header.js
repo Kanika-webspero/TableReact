@@ -12,7 +12,7 @@ const Header = () => {
             // debugger
             if (currentScrollY > 0) {
              document.getElementById('header').style.height = '90px'
-             document.getElementById('header').style.fontSize = '10px'
+             document.getElementById('header').style.fontSize = '14px'
             }
             if (currentScrollY === 0) {
                 document.getElementById('header').style.height = '110px'

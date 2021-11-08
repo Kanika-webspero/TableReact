@@ -52,7 +52,7 @@ const SignUp = () => {
                 
                      <Typography variant="h4" component="h4">Sign Up</Typography>
 
-                     <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
+                     <FormControl className='inputBox' sx={{ m: 1, width: '25ch' }} variant="outlined">
                      <InputLabel htmlFor="outlined-adornment-password">Name</InputLabel>
                      <OutlinedInput
                          id="outlined-adornment-weight"
@@ -66,7 +66,7 @@ const SignUp = () => {
                      />
                  </FormControl>
                        
-                     <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
+                     <FormControl className='inputBox' sx={{ m: 1, width: '25ch' }} variant="outlined">
                          <InputLabel htmlFor="outlined-adornment-password">Email</InputLabel>
                          <OutlinedInput
                              id="outlined-adornment-weight"
@@ -80,7 +80,7 @@ const SignUp = () => {
                          />
                      </FormControl>
                       
-                     <FormControl style={{width: '100%'}} sx={{ m: 1, width: '25ch' }} variant="outlined">
+                     <FormControl className='inputBox' sx={{ m: 1, width: '25ch' }} variant="outlined">
                          <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
                          <OutlinedInput
                              id="outlined-adornment-password"

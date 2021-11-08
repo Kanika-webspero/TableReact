@@ -40,9 +40,8 @@ const history = useHistory();
 
     return (
         <div>
-        <div style={{display: 'flex',boxShadow: '0 8px 6px -6px black', justifyContent: 'space-between', paddingLeft: '15px', paddingRight: '15px',
-        }}>
-        <img src={lg} style={{width: '30px', height: '30px', marginTop: '5px'}} alt="storiedLogo" />
+        <div className='mainHeaderContainer'>
+        <img src={lg} className='mainHeaderImage' alt="storiedLogo" />
         <div>
         <Button style={highlightTabs === '/' ? {backgroundColor: 'lightgray'} : {color:'gray'}} onClick={textButton} >Text</Button>
         <Button style={highlightTabs === '/about' ? {backgroundColor: 'lightgray'} : {color:'gray'}} onClick={aboutButton} >About</Button>
@@ -50,7 +49,7 @@ const history = useHistory();
         <Button style={highlightTabs === '/other' ? {backgroundColor: 'lightgray'} : {color:'gray'}}  onClick={otherButton} >Other</Button>
         </div>
         <div>
-        <AccountCircleIcon style={{fontSize: '44px', color: 'gray'}} onClick={signOutButton} className="signoutbutton"/>
+        <AccountCircleIcon className='mainHeaderSignOut' onClick={signOutButton} />
         </div>
         </div>
         </div>

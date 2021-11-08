@@ -44,19 +44,9 @@ const DataTable = (props) => {
 
   return (
     <>
-      <div style={{
-        //    width: "100%",
-            // zIndex: "9999999"
-             }}>
-        <div style={{ position: "fixed", width: "100%", top: "0px" }}>
-          <div
-            style={{
-              backgroundColor: "white",
-              height: "51px",
-              top: "0px",
-              width: "100%",
-            }}
-          >
+      <div>
+        <div className='tableMainContainer'>
+          <div className='tableHeader'>
             <MainHeader setIsAuth={props.setIsAuth} />
           </div>
 
@@ -64,16 +54,10 @@ const DataTable = (props) => {
             <Header />
           </div>
         </div>
-        <div style={{marginTop: '205px'}}>
-          <div
-            style={{ marginTop: "23px",
-             display: "flex",
-             marginBottom: '10px'
-            //flexDirection: "row"
-               }}
-          >
-            <div style={{ fontSize: "23px" }}>Personal Info</div>
-            <AddIcon style={{ color: "lightgray" }} />
+        <div className='tableContainer'>
+          <div className='tableContent'>
+            <div className='infoContent'>Personal Info</div>
+            <AddIcon className='addIcon'/>
           </div>
           <Table columns={columns} data={resData} keys={keys} />
 
