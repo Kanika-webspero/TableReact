@@ -42,7 +42,7 @@ td, th {
 /* Others. about page styling */
 
 .othersPageContainer, .aboutPageContainer{
-  margin-top: '90px'
+  margin-top: 90px
 }
 
 .othersPageHeader, .aboutPageHeader{
@@ -55,7 +55,7 @@ td, th {
 }
 
 .othersPageButton{
-  margin-top: '10px'
+  margin-top: 10px
 }
 
 /* MainHeader */
@@ -131,7 +131,6 @@ td, th {
 } */
 
 .signInButton, .signUpRecommendation {
-  /* margin-top: 20px; */
   cursor: pointer;
   margin-top: 8px;
 
