@@ -85,11 +85,6 @@ td, th {
 
 /* Header page */
 
-/* .headerMainContainer {
-  height: 130px;
-  width: 100%;
-} */
-
 .headerContainer {
   display: flex;
   background-color: lightgray;
@@ -130,6 +125,60 @@ td, th {
   left: 0px
 }
 
+/* Small header page */
+
+.smallHeaderMainContainer {
+  background-color: lightgray;
+  height: 110px;
+  display: none 
+}
+
+.smallHeaderContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-around
+}
+
+.smallHeaderContent {
+  display: flex
+}
+
+.imageContainer {
+  margin-right: 50px;
+  margin-top: 5px
+}
+
+.smallHeaderImage {
+  width: 75px;
+  border-radius: 15px
+}
+
+.content {
+  display: flex;
+  align-items: center
+}
+
+.smallHeaderRightButton {
+  border-radius: 7px !important;
+  background-color: #fff !important;
+  color: #000 !important;
+  margin-right: 15px !important;
+}
+
+.smallHeaderLeftButton {
+  border-radius: 7px !important;
+  background-color: #fff !important;
+  color: #000 !important;
+  margin-right: 15px !important;
+}
+
+.smallHeaderDetailButton {
+  border-radius: 7px !important;
+  color: #fff !important;
+  background-color: #000 !important;
+  margin-right: 15px !important;
+}
+
 /* Data table */
 
 .tableMainContainer {
@@ -155,6 +204,7 @@ td, th {
   margin-top: 23px;
   display: flex;
   margin-bottom: 10px;
+  flex-direction: column;
 }
 
 .infoContent {

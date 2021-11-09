@@ -1,14 +1,16 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "../components/DataTable/table";
 import { columns, keys, numbers } from "../data/MainData";
 import Header from "../components/DataTable/Header";
 import axios from "axios";
 import MainHeader from "../components/MainHeader";
 import AddIcon from "@mui/icons-material/Add";
-import SmallHeader from "../components/SmallHeader";
+import Stories from "./Stories"
+import Research from "./Research"
 
 const DataTable = (props) => {
   const [arrayNumbers, setArrayNumbers] = useState(numbers);
+  const [tab, setTab] = useState('details');
 
   const clickMe = () => {
     arrayNumbers.splice(3, 0, "0");
@@ -43,8 +45,11 @@ const DataTable = (props) => {
     }
   }, [showImage]);
 
+  const handleTab = (selectedTab) => {
+      setTab(selectedTab);
+  }
+
   return (
-    <>
       <div>
         <div className='tableMainContainer'>
           <div className='tableHeader'>
@@ -52,18 +57,24 @@ const DataTable = (props) => {
           </div>
 
           <div>
-            <Header />
+            <Header handleTab={handleTab}/>
           </div>
-        
-          
-        
         </div>
         <div className='tableContainer'>
-          <div className='tableContent'>
-            <div className='infoContent'>Personal Info</div>
-            <AddIcon className='addIcon'/>
+         
+          {tab === 'details' && 
+             <div className='tableContent'>
+             <div style={{display: 'flex'}}>
+          <div className='infoContent'>Personal Info</div>
+          <AddIcon className='addIcon'/>
           </div>
           <Table columns={columns} data={resData} keys={keys} />
+
+        </div> 
+      }
+          {tab === 'stories' && <Stories/>}
+          {tab === 'research' && <Research/>}
+          
 
           <button onClick={clickMe}>Click me</button>
           {arrayNumbers.map((nums, index) => (
@@ -71,9 +82,6 @@ const DataTable = (props) => {
           ))}
         </div>
       </div>
-
-      <div></div>
-    </>
   );
 };
 
