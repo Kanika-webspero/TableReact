@@ -1,13 +1,16 @@
 #root {
-  /* overflow: hidden; */
     height: 100vh;
+}
+
+#root.MuiTypography {
+  font-family: "Atlas Grotesk Web Bold",sans-serif !important;
+
 }
 
 .table {
   font-family: arial, sans-serif;
   border-collapse: collapse;
   width: 100%;
-  /* margin-top: 132px; */
 }
 
 td, th {
@@ -65,7 +68,8 @@ td, th {
   box-shadow: 0 8px 6px -6px black;
   justify-content: space-between;
   padding-left: 15px;
-  padding-right: 15px;       
+  padding-right: 15px;  
+  height: 51px;     
 }
 
 .mainHeaderImage {
@@ -75,8 +79,40 @@ td, th {
 }
 
 .mainHeaderSignOut {
-  font-size: 44px;
+  font-size: 44px !important;
   color: gray;
+}
+
+/* Header page */
+
+/* .headerMainContainer {
+  height: 130px;
+  width: 100%;
+} */
+
+.headerContainer {
+  display: flex;
+  background-color: lightgray;
+  width: 100% !important;
+  font-size: 50px;
+  top: 0px;
+  height: 180px;
+}
+
+.headerImageContainer {
+  margin-left: 216px
+}
+
+.headerImage {
+  height: 120%;
+  border-radius: 20px;
+  /* width: 70%; */
+  margin-top: 15px;
+}
+
+.headerContentContainer {
+  margin-left: 20px;
+  margin-top: 15px;
 }
 
 /* Home page styling */
@@ -104,13 +140,15 @@ td, th {
 
 .tableHeader {
   background-color: white;
-  height: 51px;
+  height: 56px;
   top: 0px;
   width: 100%
 }
 
 .tableContainer {
-  margin-top: 205px;
+  margin-top: 300px;
+  margin-left: 216px;
+  width: 83vw;
 }
 
 .tableContent {
@@ -125,15 +163,10 @@ td, th {
 .addIcon {
   color: lightgray;
 }
-/* .inputDetails {
-  margin-bottom: 8px;
-  margin-top: 8px;
-} */
 
 .signInButton, .signUpRecommendation {
   cursor: pointer;
   margin-top: 8px;
-
 }
 
 .container {

@@ -5,6 +5,7 @@ import Header from "../components/DataTable/Header";
 import axios from "axios";
 import MainHeader from "../components/MainHeader";
 import AddIcon from "@mui/icons-material/Add";
+import SmallHeader from "../components/SmallHeader";
 
 const DataTable = (props) => {
   const [arrayNumbers, setArrayNumbers] = useState(numbers);
@@ -53,6 +54,9 @@ const DataTable = (props) => {
           <div>
             <Header />
           </div>
+        
+          
+        
         </div>
         <div className='tableContainer'>
           <div className='tableContent'>
