@@ -41,18 +41,18 @@ const Header = (props) => {
                     <Typography variant='h6' title='Doctor Test'>D: unknown</Typography>
                     <Typography variant='h6' title='Doctor Test'>Your great-grandfather</Typography>
 
-                    <div style={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-between' }}>
+                    <div className='headerTabsContainer'>
                         <div>
-                            <Button onClick={() => props.handleTab('stories')} style={{ borderRadius: '7px', padding: '3px', backgroundColor: '#fff', color: '#000', marginRight: '15px', marginBottom: '18px' }} variant='contained'>Stories</Button>
-                            <Button onClick={() => props.handleTab('details')} style={{ borderRadius: '7px', padding: '3px', backgroundColor: '#fff', color: '#000', marginRight: '15px', marginBottom: '18px' }} variant='contained'>Details</Button>
-                            <Button onClick={() => props.handleTab('research')} style={{ borderRadius: '7px', padding: '3px', backgroundColor: '#fff', color: '#000', marginBottom: '18px' }} variant='contained'>Research</Button>
+                            <Button onClick={() => props.handleTab('stories')} className='headerTabs' variant='contained'>Stories</Button>
+                            <Button onClick={() => props.handleTab('details')} className='headerTabs'  variant='contained'>Details</Button>
+                            <Button onClick={() => props.handleTab('research')} className='headerTabs' variant='contained'>Research</Button>
                         </div>
                         <div>
-                            <Button startIcon={<SearchIcon />} style={{ borderRadius: '7px', padding: '3px', backgroundColor: '#fff', color: '#000', marginRight: '15px', marginBottom: '18px' }} variant='contained'>Search</Button>
-                            <Button style={{ borderRadius: '7px', padding: '3px', backgroundColor: '#fff', color: '#000', marginBottom: '18px' }} variant='contained'>View Tree</Button>
+                            <Button startIcon={<SearchIcon />} className='headerTabs' variant='contained'>Search</Button>
+                            <Button className='headerTabs' variant='contained'>View Tree</Button>
                         </div>
                     </div>
-                    <hr style={{ width: '70vw', marginTop: '-12px' }} />
+                    <hr className='headerLine'/>
                 </div>
 
             </div>

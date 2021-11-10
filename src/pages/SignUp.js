@@ -44,6 +44,10 @@ const SignUp = () => {
         history.push('/')
     }
 
+    const ToSignIn = () => {
+        history.push('/signin')
+    }
+
     return (
         <MyGrid
             leftSide={<img src={monument} alt="monument" width="100%" />}
@@ -101,7 +105,8 @@ const SignUp = () => {
                                  </InputAdornment>
                              }
                              label="Password"
-                         />                        
+                         /> 
+                         <div onClick={ToSignIn}>If you have account already, click here to signIn </div>                      
                         <div className="signInButton">
                              <Button onClick={handelSignUp} variant="contained">Sign Up</Button>
                          </div>

@@ -8,15 +8,9 @@ const TableOne = "TableOne";
 const Table = (props) => {
 
   const [tableCells, setTableCells] = useState(null);
-  // const [value, setValue] = useState({
-  //   title: ''
-  // });
 
   const handleChange = e => {
-    // setValue(e.target.value);
     setTableCells({...tableCells, value: e.target.value})
-    console.log(e.target.value, ']]]]]')
-
   };
 
 
@@ -125,10 +119,6 @@ const Table = (props) => {
     }
     
   }
-
-  // console.log(props.data, '====data')
-  //           console.log(props.keys, '====keys')
-            console.log(tableCells, 'hdhtableCells')
 
   return (
 
