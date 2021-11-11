@@ -8,8 +8,8 @@ import TemporaryDrawer from './Drawer';
 const Home = (props) => {
 
     const [duplicateValues, setDupliacteValues] = useState(duplicateArray);
-      const [count, setCount] = useState(0);
-      const [item, setItem] = useState(10);
+    const [count, setCount] = useState(0);
+    const [item, setItem] = useState(10);
     const [sameItem, setSameItem] = useState(0)
     const [additionNum, setAdditionNum] = useState(0)
     const [updateAdditionNum, setUpdateAdditionNum] = useState(0)
@@ -18,20 +18,20 @@ const Home = (props) => {
     const inputBox = () => {
         setMultipleInput(true)
     }
-      
 
-      const multiCountMemo = useMemo(function multiCount() {
-       console.log('multicount')
-        return count*5;
-      },[count])
+
+    const multiCountMemo = useMemo(function multiCount() {
+        console.log('multicount')
+        return count * 5;
+    }, [count])
 
     const removeDuplicate = () => {
-       const dup = duplicateValues.filter((a, el) => {
-            return ( duplicateValues.indexOf(a) === el)
-          });
+        const dup = duplicateValues.filter((a, el) => {
+            return (duplicateValues.indexOf(a) === el)
+        });
 
-          setDupliacteValues(dup)
-        
+        setDupliacteValues(dup)
+
     }
 
     const [arrayNumbers, setArrayNumbers] = useState(numbers)
@@ -45,7 +45,7 @@ const Home = (props) => {
     // const clickToAdd = () => {
     // }
 
-  
+
 
     const addition = () => {
         console.log('addition')
@@ -79,39 +79,39 @@ const Home = (props) => {
         //         ))}
         // </div>
 
-        
+
         <div className='homeContainer'>
-        <div className='homeHeader'>
-        <MainHeader setIsAuth={props.setIsAuth}/>
-      <div>
-      <div>Count: {count}</div>
-      <div>Item: {item}</div>
-      <div>SameItem: {sameItem}</div>
-        <div>{multiCountMemo}</div>
-      <button onClick={() => setCount(count + 1)}>Update count</button>
-      <button onClick={() => setItem(item + 1)}>Update item</button>
-        <button onClick={() => setSameItem(item)}>Update same item</button>
+            <div className='homeHeader'>
+                <MainHeader setIsAuth={props.setIsAuth} />
+                <div>
+                    <div>Count: {count}</div>
+                    <div>Item: {item}</div>
+                    <div>SameItem: {sameItem}</div>
+                    <div>{multiCountMemo}</div>
+                    <button onClick={() => setCount(count + 1)}>Update count</button>
+                    <button onClick={() => setItem(item + 1)}>Update item</button>
+                    <button onClick={() => setSameItem(item)}>Update same item</button>
 
-      </div>
-      <div>
-      <div>{additionNum}</div>
-      <div>{updateAdditionNum}</div>
-      <button onClick={addition}>Addition</button>
-      <button onClick={updateAddition}>Update Addition</button>
+                </div>
+                <div>
+                    <div>{additionNum}</div>
+                    <div>{updateAdditionNum}</div>
+                    <button onClick={addition}>Addition</button>
+                    <button onClick={updateAddition}>Update Addition</button>
 
-      </div>
-      <TextField  InputProps={{ disableUnderline: true }} id="standard-basic" label="Standard" variant="standard" />
-      <div>
-      
-      {multipleInput ? <div>
-        <input />
-        <input />
-          
-          </div> : <input onClick={inputBox} placeholder='name'/>}
-        
-      </div>
-        </div>
-        <Model />
+                </div>
+                <TextField InputProps={{ disableUnderline: true }} id="standard-basic" label="Standard" variant="standard" />
+                <div>
+
+                    {multipleInput ? <div>
+                        <input />
+                        <input />
+
+                    </div> : <input onClick={inputBox} placeholder='name' />}
+
+                </div>
+            </div>
+            <Model />
         </div>
     )
 }
