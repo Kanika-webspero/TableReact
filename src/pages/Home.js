@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Model from '../components/3DModel';
 import MainHeader from '../components/MainHeader';
 import { duplicateArray, numbers } from '../data/MainData';
 import TemporaryDrawer from './Drawer';
@@ -25,25 +26,31 @@ const Home = (props) => {
     }
 
     return (
+        // <div className='homeContainer'>
+        // <div className='homeHeader'>
+        // <MainHeader setIsAuth={props.setIsAuth}/>
+        // </div>
+        // <TemporaryDrawer />
+        // <div>
+        // Home
+        // </div>
+        // <button onClick={removeDuplicate}>Remove Duplicate</button>
+        // {duplicateValues.map((value, index) => {
+        //     return (
+        //         <span key={index}>{value}</span>
+        //     )
+        // })}
+        // <br/>
+        // <button onClick={clickMe}>Add new value</button>
+        //         {arrayNumbers.map((nums, index) => (
+        //             <span key={index}>{nums}</span>
+        //         ))}
+        // </div>
         <div className='homeContainer'>
         <div className='homeHeader'>
         <MainHeader setIsAuth={props.setIsAuth}/>
         </div>
-        <TemporaryDrawer />
-        <div>
-        Home
-        </div>
-        <button onClick={removeDuplicate}>Remove Duplicate</button>
-        {duplicateValues.map((value, index) => {
-            return (
-                <span key={index}>{value}</span>
-            )
-        })}
-        <br/>
-        <button onClick={clickMe}>Add new value</button>
-                {arrayNumbers.map((nums, index) => (
-                    <span key={index}>{nums}</span>
-                ))}
+        <Model />
         </div>
     )
 }

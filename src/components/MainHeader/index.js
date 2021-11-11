@@ -43,7 +43,7 @@ const history = useHistory();
         <div className='mainHeaderContainer'>
         <img src={lg} className='mainHeaderImage' alt="storiedLogo" />
         <div>
-        <Button style={highlightTabs === '/' ? {backgroundColor: 'lightgray'} : {color:'gray'}} onClick={textButton} >Text</Button>
+        <Button style={highlightTabs === '/' ? {backgroundColor: 'lightgray'} : {color:'gray'}} onClick={textButton} >3D Model</Button>
         <Button style={highlightTabs === '/about' ? {backgroundColor: 'lightgray'} : {color:'gray'}} onClick={aboutButton} >About</Button>
         <Button style={highlightTabs === '/dataTable' ? {backgroundColor: 'lightgray'} : {color:'gray'}} onClick={familyButton} >Family</Button>
         <Button style={highlightTabs === '/other' ? {backgroundColor: 'lightgray'} : {color:'gray'}}  onClick={otherButton} >Other</Button>
