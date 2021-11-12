@@ -7,6 +7,10 @@ const TableOne = "TableOne";
 
 const Table = (props) => {
 
+  let directTyping = true;
+
+let isChanged = false;
+
   const [tableCells, setTableCells] = useState(null);
 
   const handleChange = e => {
@@ -30,26 +34,34 @@ const Table = (props) => {
     });
   }
 
-  const handleCells = (rowIndex, colIndex) => {
+  const handleCells = (rowIndex, colIndex, dataRow, keyName) => {
     // debugger
+    if(tableCells && tableCells.editMode) return;
+    const sameKeyBehave = tableCells && tableCells.cellId === getTableCell(TableOne, rowIndex, colIndex) ? true : false
     const cellId = getTableCell(TableOne, rowIndex, colIndex);
     handelRemove();
     handelSelect(cellId);
-    if(tableCells && !tableCells.editMode) {
+    
      
       // handleChange(cellId)
       setTableCells({
+        cellId: getTableCell(TableOne, rowIndex, colIndex),
         id: "id",
         selectedIndex: cellId,
         rowIndex,
         colIndex,
+        dataRow,
         type: "text",
-        name: "age", //dynamic to be 
-        value: "test",
-        editMode: false
-      }) 
-    }
-    
+        name: keyName, //dynamic to be 
+        value: dataRow[keyName],
+        editMode: sameKeyBehave
+      })     
+  }
+
+  const handleBlur = () => {
+    setTableCells({
+      ...tableCells, editMode: false
+    })
   }
 
   const keyMove = (e, e2, index) => {
@@ -110,7 +122,7 @@ const Table = (props) => {
           break;
           //enter
           case 13:
-            alert('djchj')
+            // alert('djchj')
             setTableCells({...tableCells, editMode: !tableCells.editMode})
             return;
         default:
@@ -149,13 +161,14 @@ const Table = (props) => {
                   const cellId = getTableCell(TableOne, rowIndex, colIndex);
 
                   return (
-                    <td id={cellId} onClick={() => handleCells(rowIndex, colIndex)} key={colIndex}>
+                    <td id={cellId} onClick={() => handleCells(rowIndex, colIndex, ele, val)} key={colIndex}>
                       {val === 'thumbnailUrl' ? <img src={ele[val]} alt="random" /> : 
                       val === 'action' ? <div>
                       <Button onClick={() => props.handeledit(ele, rowIndex)}>Edit</Button>
                       <Button onClick={() => props.deletevalue(ele, rowIndex)}>Delete</Button>
 
-                      </div> : tableCells && tableCells.selectedIndex === cellId && tableCells.editMode ? <input type="text"  onChange={handleChange} value={ele[val]} /> : `${ele[val]}` }
+                      </div> : tableCells && tableCells.selectedIndex === cellId && tableCells.editMode ? 
+                      <input type="text" name={tableCells.name} onBlur={handleBlur} onChange={handleChange} value={tableCells.value} /> : `${ele[val]}` }
                     </td>
                   )
                 })}
